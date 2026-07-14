@@ -6,7 +6,8 @@ import fs from 'node:fs/promises'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DATA_FILE = path.join(__dirname, 'data', 'restaurants.json')
 const DIST_DIR = path.join(__dirname, '..', 'dist')
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 5177
+const HOST = process.env.HOST || '0.0.0.0'
 
 let restaurants = JSON.parse(await fs.readFile(DATA_FILE, 'utf-8'))
 let saveQueue = Promise.resolve()
@@ -78,6 +79,6 @@ app.use((req, res) => {
   })
 })
 
-app.listen(PORT, () => {
-  console.log(`API server listening on http://localhost:${PORT}`)
+app.listen(PORT, HOST, () => {
+  console.log(`Server listening on http://localhost:${PORT} (and on your LAN IP, port ${PORT})`)
 })
