@@ -1,0 +1,9 @@
+# How do the restaurants get saved in the backend / persisted?
+
+## Persistence via a JSON File 
+
+It's a JSON file (server/data/restaurants.json), not a database. Express loads it into memory on startup, mutates that array on each edit, and rewrites the whole file to disk after every change (writes are queued so concurrent edits can't corrupt the file). Simple and durable for a personal tool; would need a real DB only if this grew to many concurrent users.
+
+## Editing `restaurants.json`
+
+One thing worth flagging for next time: since the server only reads restaurants.json at boot, any time you hand-edit that file directly (instead of using the Manage screen in the app, which calls the live API), you'll need to restart npm run dev for it to take effect.

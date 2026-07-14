@@ -1,0 +1,410 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.app-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.panel-wide {
+  max-width: 560px;
+}
+
+.manage-link {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: rgba(43, 28, 21, 0.8);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 8px 18px;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.manage-link:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #23150c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+  color: #23150c;
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  color: #6b5648;
+}
+
+.back-link {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  background: none;
+  border: none;
+  color: #a4531f;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Mode select */
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 12px;
+  border-radius: 18px;
+  border: 2px solid #ffd8b8;
+  background: #fff6ee;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.mode-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(255, 122, 60, 0.25);
+  border-color: #ff8a4c;
+}
+
+.mode-emoji {
+  font-size: 2.2rem;
+}
+
+.mode-label {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #23150c;
+}
+
+.mode-desc {
+  font-size: 0.85rem;
+  color: #8a7666;
+}
+
+/* Cuisine select */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid #ffb27a;
+  background: #fff;
+  color: #a4531f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.chip:hover {
+  background: #ff8a4c;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Spinner */
+.spinner-wrap {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.reel {
+  width: 100%;
+  min-height: 160px;
+  border-radius: 18px;
+  border: 3px dashed #ffb27a;
+  background: #fff6ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 4px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.reel-spinning {
+  border-style: solid;
+  border-color: #ff8a4c;
+}
+
+.reel-landed {
+  border-style: solid;
+  border-color: #33a852;
+  background: #f1fbf3;
+  animation: land 0.35s ease;
+}
+
+@keyframes land {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.reel-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.reel-placeholder {
+  opacity: 0.4;
+}
+
+.reel-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #23150c;
+}
+
+.reel-cuisine {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #a4531f;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reel-blurb {
+  font-size: 0.9rem;
+  color: #6b5648;
+}
+
+.spin-button {
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff8a4c, #ff5f6d);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(255, 95, 109, 0.35);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.spin-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.spin-button:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.post-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.text-button {
+  background: none;
+  border: none;
+  color: #a4531f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+/* Manage restaurants */
+.chip-solid {
+  background: #ff8a4c;
+  color: #fff;
+  border-color: #ff8a4c;
+}
+
+.chip-solid:hover {
+  background: #ff7a30;
+  color: #fff;
+}
+
+.chip-solid:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-button {
+  margin: 22px 0 18px;
+}
+
+.restaurant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 22px 0;
+  text-align: left;
+}
+
+.restaurant-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b5648;
+}
+
+.label-hint {
+  font-weight: 400;
+  color: #a4531f;
+}
+
+.restaurant-form input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 2px solid #ffd8b8;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.restaurant-form input:focus {
+  outline: none;
+  border-color: #ff8a4c;
+}
+
+.form-error {
+  color: #c0392b;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  align-items: center;
+}
+
+.restaurant-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 380px;
+  overflow-y: auto;
+  text-align: left;
+  border-top: 1px solid #ffe4cc;
+}
+
+.restaurant-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid #ffe4cc;
+}
+
+.restaurant-row-emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.restaurant-row-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.restaurant-row-name {
+  font-weight: 700;
+  color: #23150c;
+}
+
+.restaurant-row-cuisine {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #a4531f;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.restaurant-row-blurb {
+  font-size: 0.85rem;
+  color: #8a7666;
+}
+
+.restaurant-row-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  line-height: 1;
+}
+
+.icon-button:hover {
+  background: #ffe4cc;
+}
+
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 420px) {
+  .mode-grid {
+    grid-template-columns: 1fr;
+  }
+}
