@@ -2,6 +2,7 @@ import express from 'express'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs/promises'
+import os from 'node:os'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DATA_FILE = path.join(__dirname, 'data', 'restaurants.json')
@@ -79,6 +80,17 @@ app.use((req, res) => {
   })
 })
 
+function lanAddresses() {
+  return Object.values(os.networkInterfaces())
+    .flat()
+    .filter((iface) => iface && iface.family === 'IPv4' && !iface.internal)
+    .map((iface) => iface.address)
+}
+
 app.listen(PORT, HOST, () => {
-  console.log(`Server listening on http://localhost:${PORT} (and on your LAN IP, port ${PORT})`)
+  console.log(`Server running:`)
+  console.log(`  http://localhost:${PORT}`)
+  for (const ip of lanAddresses()) {
+    console.log(`  http://${ip}:${PORT}  <- use this from other devices`)
+  }
 })
